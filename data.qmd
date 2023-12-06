@@ -2,4 +2,16 @@
 title: "Data"
 ---
 
-Data source: xxx
+**Data Import Process**
+
+```{r}
+install.packages("readxl")
+library("readxl")
+TUIK <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\TUIK-Endeks.xlsx")
+#Then to save it as .RData
+save(TUIK, file = "TUIK.RData")
+load("TUIK.RData")
+
+```
+
+You can reach our dataset as .RData from
