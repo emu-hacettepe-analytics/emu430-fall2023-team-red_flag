@@ -14,4 +14,4 @@ load("TUIK.RData")
 
 ```
 
-You can reach our dataset as .RData from
+You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK.RData)
