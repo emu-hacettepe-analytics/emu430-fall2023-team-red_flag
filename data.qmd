@@ -4,6 +4,10 @@ title: "Data"
 
 **Data Import Process**
 
+We started editing our data set by downloading the weighted expenditure group analysis from TUIK's website. Then, we rearranged the relevant Excel sheet according to the data of December 2011-2022 to make it more understandable and sensitive.
+
+The first and most important step to star our analysis process is to transfer our data set to R. To do this, we first needed to download the readxl package on R. After determining the file path of our document, we transferred our Excel document to the R environment with the read_excel function. Lastly, to convert our file format .xlsx to .RData, we used save function, and loaded our TUIK.RData document.
+
 ```{r}
 install.packages("readxl")
 library("readxl")
