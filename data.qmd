@@ -7,11 +7,11 @@ title: "Data"
 ```{r}
 install.packages("readxl")
 library("readxl")
-TUIK <- read_excel("TUIK-Weighted-Expenditure.xlsx")
+TUIK <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\TUIK-Weighted-Expenditure.xlsx")
 #Then to save it as .RData
 save(TUIK, file = "TUIK.RData")
 load("TUIK.RData")
 
 ```
 
-You can reach our dataset as .RData from.
+You can reach our dataset as .RData from .
