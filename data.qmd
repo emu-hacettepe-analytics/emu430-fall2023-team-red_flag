@@ -2,6 +2,16 @@
 title: "Data"
 ---
 
+**Our Objective**
+
+In this project, our primary focus will be on analyzing the Consumer Price Index (CPI) data sourced from the TUIK page. The CPI basket, which constitutes the basis of our study, is a representation of the consumption patterns of an average household. This basket encompasses various main expenditure groups, such as food, clothing, and health, each assigned a specific weight percentage. The measurement of inflation, or CPI, is derived from the price changes within these main groups, and our goal is to study into the shifts in the main expenditure groups' weights in the CPI basket in Turkey over the years, incorporating both economic and sociological perspectives.
+
+We have chosen to base our sociological analysis on the US CPI data, considering the United States as a developed country. To make our sociological assessments more understandable and consistent, we will use the US CPI as a benchmark. The data for analysis will be taken from the TUIK's annual updates to the basket weights, specifically focusing on the December data of each year.
+
+Our objectives in this project involve creating comprehensive tables and analytical tools based on the December data, considering its annual update. These tables and tools will be essential for both data visualization and the exploration of topics in other related courses. Through the use of weight data from the main expenditure groups in the CPI basket, we want to do sociological and economic analyses, comparing Turkey and the US.
+
+With the help of this research, we hope to get an in-depth view of the variables affecting inflation and provide knowledge to the discussion on social and economic dynamics in Turkey. We will do this by interpreting and comparing the US CPI information.
+
 **Data Import Process**
 
 We started editing our data set by downloading the weighted expenditure group analysis from TUIK's website. Then, we rearranged the relevant Excel sheet according to the data of December 2011-2022 to make it more understandable and sensitive.
@@ -15,7 +25,12 @@ TUIK <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\TUIK-Weigh
 #Then to save it as .RData
 save(TUIK, file = "TUIK.RData")
 load("TUIK.RData")
-
+ncol(TUIK)
+nrow(TUIK)
 ```
 
 You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK.RData).
+
+**Exploratory Data Analysis**
+
+When we review our data set, we can observe that it contains 13 columns and 12 rows. While the columns of our dataset contain December data between 2011-2022, the columns represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and other fuels, Furnishing household equipment routine maintenance of the house, health, transportation, communucation, Recreation and culture, education, Hotels cafes and restaurants, and lastly Miscellaneous goods and services.
