@@ -36,6 +36,7 @@ You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe
 load("TUIK.RData")
 ncol(TUIK)
 nrow(TUIK)
+TUIK
 ```
 
 When we review our data set, we can observe that it contains 13 columns and 12 rows. While the columns of our dataset contain December data between 2011-2022, the columns represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and other fuels, Furnishing household equipment routine maintenance of the house, health, transportation, communucation, Recreation and culture, education, Hotels cafes and restaurants, and lastly Miscellaneous goods and services.
