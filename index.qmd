@@ -9,18 +9,20 @@ Please stay tuned to follow our project activities.
 
 This is our template.
 
-DENEME DENEME DENEME
-
 # Team Members
 
-1.  [Görkem Güneş](https://github.com/emu-hacettepe-analytics/emu430-fall2023-goerkemgunes)
+1.  [Buse Doğanay](emu-hacettepe-analytics/emu430-fall2023-busedoganay: emu430-fall2023-busedoganay created by GitHub Classroom)
 
-2.  [Buse Doğanay](https://tr.wikipedia.org/wiki/Du%C5%A1an_Tadi%C4%87)
+2.  [Görkem Güneş](https://github.com/emu-hacettepe-analytics/emu430-fall2023-goerkemgunes)
 
-3.  [Keziban Uçar](https://tr.wikipedia.org/wiki/Fred_(1993_do%C4%9Fumlu_futbolcu))
+3.  [Keziban Uçar](emu-hacettepe-analytics/emu430-fall2023-kezibanucar: emu430-fall2023-kezibanucar created by GitHub Classroom)
 
-4.  [Recai Yiğit Kurular](https://tr.wikipedia.org/wiki/Sebastian_Szyma%C5%84ski)
+4.  [Recai Yiğit Kurular](emu-hacettepe-analytics/emu430-fall2023-yigitkurular: emu430-fall2023-yigitkurular created by GitHub Classroom)
 
 # Project Topic
 
+The project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups\' weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.
+
 # Data Set
+
+The data source is the TUIK page, which provides rate of changes in the consumer price index and indices by main expenditure groups.
