@@ -25,6 +25,10 @@ TUIK <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\TUIK-Weigh
 #Then to save it as .RData
 save(TUIK, file = "TUIK.RData")
 load("TUIK.RData")
+#And for US Expenditure Groups dataset
+US_Data <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\US-Weighted-Expenditure.xlsx")
+save(US_Data, file = "US_Data.RData")
+load("US_Data.RData")
 ```
 
 You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK.RData), also you can reach it as .xlsx from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK-Weighted-Expenditure.xlsx).
@@ -36,6 +40,9 @@ You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe
 load("TUIK.RData")
 ncol(TUIK)
 nrow(TUIK)
+load("US_Data.RData")
+ncol(US_Data)
+nrow(US_Data)
 ```
 
 When we review our data set, we can observe that it contains 3 columns and 144 rows. While the columns of our dataset contain date, category, and weight percentage. The dates are between 2011-2022, and the categories represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and other fuels, Furnishing household equipment routine maintenance of the house, health, transportation, communucation, Recreation and culture, education, Hotels cafes and restaurants, and lastly Miscellaneous goods and services.
