@@ -11,18 +11,18 @@ This is our template.
 
 # Team Members
 
-1.  [Buse Doğanay](emu-hacettepe-analytics/emu430-fall2023-busedoganay: emu430-fall2023-busedoganay created by GitHub Classroom)
+1.  [Buse Doğanay](emu-hacettepe-analytics/emu430-fall2023-busedoganay:%20emu430-fall2023-busedoganay%20created%20by%20GitHub%20Classroom)
 
 2.  [Görkem Güneş](https://github.com/emu-hacettepe-analytics/emu430-fall2023-goerkemgunes)
 
-3.  [Keziban Uçar](emu-hacettepe-analytics/emu430-fall2023-kezibanucar: emu430-fall2023-kezibanucar created by GitHub Classroom)
+3.  [Keziban Uçar](emu-hacettepe-analytics/emu430-fall2023-kezibanucar:%20emu430-fall2023-kezibanucar%20created%20by%20GitHub%20Classroom)
 
-4.  [Recai Yiğit Kurular](emu-hacettepe-analytics/emu430-fall2023-yigitkurular: emu430-fall2023-yigitkurular created by GitHub Classroom)
+4.  [Recai Yiğit Kurular](emu-hacettepe-analytics/emu430-fall2023-yigitkurular:%20emu430-fall2023-yigitkurular%20created%20by%20GitHub%20Classroom)
 
 # Project Topic
 
-The project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups\' weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.
+The project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups' weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.
 
 # Data Set
 
-The data source is the TUIK page, which provides rate of changes in the consumer price index and indices by main expenditure groups.
+The data source is the TUIK page, which provides rate of changes in the consumer price index and indices by main expenditure groups. In addition, the US data, which is our base country, is transferred to the US. We obtained it from the official page of BUREAU LABOR STATISTICS.
