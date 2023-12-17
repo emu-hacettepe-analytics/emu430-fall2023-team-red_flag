@@ -9,9 +9,7 @@ Please stay tuned to follow our project activities.
 
 This is our template.
 
-# Team Members
-
-<<<<<<< HEAD
+#Team Members
 1.  [Buse Doğanay](emu-hacettepe-analytics/emu430-fall2023-busedoganay: emu430-fall2023-busedoganay)
 
 2.  [Görkem Güneş](https://github.com/emu-hacettepe-analytics/emu430-fall2023-goerkemgunes)
@@ -19,17 +17,8 @@ This is our template.
 3.  [Keziban Uçar](emu-hacettepe-analytics/emu430-fall2023-kezibanucar: emu430-fall2023-kezibanucar)
 
 4.  [Recai Yiğit Kurular](emu-hacettepe-analytics/emu430-fall2023-yigitkurular)
-=======
-1.  [Buse Doğanay](emu-hacettepe-analytics/emu430-fall2023-busedoganay:%20emu430-fall2023-busedoganay%20created%20by%20GitHub%20Classroom)
 
-2.  [Görkem Güneş](https://github.com/emu-hacettepe-analytics/emu430-fall2023-goerkemgunes)
-
-3.  [Keziban Uçar](emu-hacettepe-analytics/emu430-fall2023-kezibanucar:%20emu430-fall2023-kezibanucar%20created%20by%20GitHub%20Classroom)
-
-4.  [Recai Yiğit Kurular](emu-hacettepe-analytics/emu430-fall2023-yigitkurular:%20emu430-fall2023-yigitkurular%20created%20by%20GitHub%20Classroom)
->>>>>>> ee8edbb75266e9a52af79d326884158b3e0c1136
-
-# Project Topic
+#Project Topic
 
 The project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups' weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.
 
