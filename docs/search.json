@@ -4,7 +4,11 @@
     "href": "index.html",
     "title": "Team red_flag",
     "section": "",
+<<<<<<< HEAD
     "text": "This is our project webpage.\nPlease stay tuned to follow our project activities.\nThis is our template.\n\nTeam Members\n\nBuse Doğanay\nGörkem Güneş\nKeziban Uçar\nRecai Yiğit Kurular\n\n\n\nProject Topic\nThe project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups’ weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.\n\n\nData Set\nThe data source is the TUIK page, which provides rate of changes in the consumer price index and indices by main expenditure groups.\n\n\n\n\n Back to top"
+=======
+    "text": "This is our project webpage.\nPlease stay tuned to follow our project activities.\nThis is our template.\n\nTeam Members\n\nBuse Doğanay\nGörkem Güneş\nKeziban Uçar\nRecai Yiğit Kurular\n\n\n\nProject Topic\nThe project aims to analyze the Consumer Price Index (CPI) data from Turkey and the US, and compare the changes in the main expenditure groups’ weights over time. We will use data visualization and analytical tools to explore the economic and sociological factors influencing inflation in both countries.\n\n\nData Set\nThe data source is the TUIK page, which provides rate of changes in the consumer price index and indices by main expenditure groups. In addition, the US data, which is our base country, is transferred to the US. We obtained it from the official page of BUREAU LABOR STATISTICS.\n\n\n\n\n Back to top"
+>>>>>>> ee8edbb75266e9a52af79d326884158b3e0c1136
   },
   {
     "objectID": "about.html",
