@@ -31,7 +31,7 @@ save(US_Data, file = "US_Data.RData")
 load("US_Data.RData")
 ```
 
-You can reach our dataset as .RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK.RData), also you can reach it as .xlsx from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK-Weighted-Expenditure.xlsx).
+You can reach our TUIK dataset as .RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK.RData), and also you can reach it as .xlsx from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/TUIK-Weighted-Expenditure.xlsx). And for US Dataset, you can reach it as RData from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/US_Data.RData), and as .xlsx from [here](https://github.com/emu-hacettepe-analytics/emu430-fall2023-team-red_flag/blob/master/US-Weighted-Expenditure.xlsx)
 
 **Exploratory Data Analysis**
 
