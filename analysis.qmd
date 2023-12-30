@@ -3,10 +3,66 @@ title: "Analysis"
 ---
 
 ```{r}
-library(readxl)
-library(dplyr)
-library(tidyr)
-library(ggplot2)
+library(shiny)
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+ui <- fluidPage(
+  # Button to toggle code visibility
+  actionButton("toggleCodeButton", "Show Code"),
+  
+  # Placeholder for code snippet - initially hidden
+  verbatimTextOutput("codeOutput")
+)
+
+server <- function(input, output, session) {
+  output$codeOutput <- renderPrint({
+    if (input$toggleCodeButton %% 2 == 1) {
+      cat("library(dplyr)\n")
+      cat("library(tidyr)\n")
+      cat("library(ggplot2)\n")
+      cat("df <- TUIK_Weighted_Expenditure\n\n")
+      
+      cat("df_table <- df %>% \n")
+      cat("  distinct(Year, Category, .keep_all = TRUE) %>%\n")
+      cat("  pivot_wider(names_from = Year, values_from = weight)\n\n")
+      
+      cat("df_long <- df_table %>% \n")
+      cat("  pivot_longer(cols = -Category, names_to = 'Year', values_to = 'Weight')\n\n")
+      
+      cat("subset_data_with_type <- df_long %>% \n")
+      cat("  mutate(Type = 'Turkey')\n")
+      cat("subset_data <- subset_data_with_type[1:12, ]\n\n")
+      
+      cat("df <- US_Weighted_Expenditure\n\n")
+      
+      cat("df_short <- df %>% \n")
+      cat("  distinct(Year, Category, .keep_all = TRUE) %>%\n")
+      cat("  pivot_wider(names_from = Year, values_from = Weight)\n\n")
+      
+      cat("df_usa <- df_short %>% \n")
+      cat("  pivot_longer(cols = -Category, names_to = 'Year', values_to = 'Weight')\n\n")
+      
+      cat("subset_data_usa <- df_usa %>% \n")
+      cat("  mutate(Type = 'USA')\n")
+      cat("subset_usa <- subset_data_usa[1:12, ]\n\n")
+      
+      cat("mixed_graph <- rbind(subset_data, subset_usa)\n\n")
+      
+      cat("ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +\n")
+      cat("  geom_line() +\n")
+      cat("  labs(\n")
+      cat("    x = 'Year',\n")
+      cat("    y = 'Weight'\n")
+      cat("  )")
+    }
+  })
+}
+
+
+```
+
+```{r}
+
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
 
@@ -21,7 +77,7 @@ df_long <- df_table %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_with_type <- df_long %>%
   mutate(Type = "Turkey")
-subset_data <- subset_data_with_type[1:12, ]
+subset_data <- subset_data_with_type[13:24, ]
 
 df <- US_Weighted_Expenditure
 
@@ -32,13 +88,374 @@ df_usa <- df_short %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_usa <- df_usa %>%
   mutate(Type = "USA")
-subset_usa <- subset_data_usa[1:12, ]
+subset_usa <- subset_data_usa[13:24, ]
 mixed_graph <- rbind(subset_data,subset_usa)
-mixed_graph
+
+
 
 ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   geom_line() +
-  labs(
-       x = "Year",
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[25:36, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[25:36, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[37:48, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[37:48, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[49:60,  ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[49:60, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[61:72, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[61:72, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[73:84, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[73:84, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[85:96, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[85:96, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[97:108, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[97:108, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[109:120, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[109:120, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[121:132, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[121:132, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
+```
+
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
+
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[133:144, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[133:144, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+
+
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
