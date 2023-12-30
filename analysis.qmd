@@ -2,10 +2,43 @@
 title: "Analysis"
 ---
 
-About this site
-
 ```{r}
-1 + 1
-```
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
 
-DENEME DENEME DENEME
+
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[1:12, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[1:12, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+mixed_graph
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(
+       x = "Year",
+       y = "Weight")
+```

@@ -21,13 +21,13 @@ The first and most important step to star our analysis process is to transfer ou
 ```{r}
 #install.packages("readxl")
 library("readxl")
-TUIK <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\TUIK-Weighted-Expenditure.xlsx")
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Downloads/TUIK-Weighted-Expenditure.xlsx")
 #Then to save it as .RData
-save(TUIK, file = "TUIK.RData")
+save(TUIK_Weighted_Expenditure, file = "TUIK.RData")
 load("TUIK.RData")
 #And for US Expenditure Groups dataset
-US_Data <- read_excel("C:\\Users\\ryigi\\Desktop\\Data-Analysis-Project\\US-Weighted-Expenditure.xlsx")
-save(US_Data, file = "US_Data.RData")
+US_Data_Expenditure <- read_excel("/Users/gorkemgunes/Downloads/US-Weighted-Expenditure.xlsx")
+save(US_Data_Expenditure, file = "US.RData")
 load("US_Data.RData")
 ```
 
@@ -37,14 +37,50 @@ You can reach our TUIK dataset as .RData from [here](https://github.com/emu-hace
 
 ```{r}
 #To learn how many column and row our dataset have:
-load("TUIK.RData")
-ncol(TUIK)
-nrow(TUIK)
-load("US_Data.RData")
-ncol(US_Data)
-nrow(US_Data)
+load("TUIK_Data_Expenditure.RData")
+ncol(TUIK_Weighted_Expenditure)
+nrow(TUIK_Weighted_Expenditure)
+load("US_Data_Expenditure.RData")
+ncol(US_Data_Expenditure)
+nrow(US_Data_Expenditure)
 ```
 
 When we review TUIKdata set, we can observe that it contains 3 columns and 144 rows. While the columns of our dataset contain date, category, and weight percentage. The dates are between 2011-2022, and the categories represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and fuels, Furnishing household equipment routine maintenance of the house, health, transportation, communucation, Recreation and culture, education, Hotels cafes and restaurants, and lastly Miscellaneous goods and services.
 
 When we review US data set, we can observe that it contains 3 columns and 120rows. While the columns of our dataset contain date, category, and weight percentage. The dates are between 2011-2022, and the categories represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and fuels, health, transportation, communucation, Recreation and culture, education, and lastly Miscellaneous goods and services.
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+df <- TUIK_Weighted_Expenditure
+
+
+df_table <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= weight)
+df_long <- df_table %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_with_type <- df_long %>%
+  mutate(Type = "Turkey")
+subset_data <- subset_data_with_type[1:12, ]
+
+df <- US_Weighted_Expenditure
+
+df_short <- df %>% 
+  distinct(Year, Category, .keep_all = TRUE) %>%
+  pivot_wider(names_from = Year, values_from= Weight)
+df_usa <- df_short %>%
+  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
+subset_data_usa <- df_usa %>%
+  mutate(Type = "USA")
+subset_usa <- subset_data_usa[1:12, ]
+mixed_graph <- rbind(subset_data,subset_usa)
+mixed_graph
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(
+       x = "Year",
+       y = "Weight")
+```
