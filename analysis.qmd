@@ -192,6 +192,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -228,6 +229,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -264,6 +266,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -300,6 +303,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -335,6 +339,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -443,4 +448,3 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
-
