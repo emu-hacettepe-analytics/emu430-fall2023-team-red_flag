@@ -124,6 +124,8 @@ mixed_graph <- rbind(subset_data,subset_usa)
 
 ```
 
+Our other chart that clearly shows the impact of economic decisions on the weight units in the consumer's CPI basket is the housing weight group. As you can see, the weight of the housing group in America is much greater than in Turkey. The main reason for this is that there is actually a mortgage industry in America and this is supported and encouraged by the state.
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -159,6 +161,8 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
+In the chart below, the graph of the household good weight group only in Turkey is depicted. The main reason for this is that such a weight group is not included in the American CPI basket. This is an indication that the weight groups in the CPI may vary depending on the spending behavior and cultural structure of the society in that country.
 
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
@@ -197,6 +201,8 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
        y = "Weight")
 ```
 
+The recreation and culture weight group below is the weight group that gives information about the other development mentioned at the beginning of the analysis. As you can see in the chart, the basket weight of America, a developed country, is higher than the basket weight of developing Turkey. In addition, the impact of the decreasing purchasing power in Turkey in recent years on society is clearly seen. With decreasing purchasing power, people give up their entertainment or social activities.
+
 ```{r}
 TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
@@ -212,7 +218,7 @@ df_long <- df_table %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_with_type <- df_long %>%
   mutate(Type = "Turkey")
-subset_data <- subset_data_with_type[25:36, ]
+subset_data <- subset_data_with_type[97:108, ]
 
 df <- US_Weighted_Expenditure
 
@@ -223,9 +229,8 @@ df_usa <- df_short %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_usa <- df_usa %>%
   mutate(Type = "USA")
-subset_usa <- subset_data_usa[25:36, ]
+subset_usa <- subset_data_usa[85:96, ]
 mixed_graph <- rbind(subset_data,subset_usa)
-
 
 
 ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
@@ -287,7 +292,7 @@ df_long <- df_table %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_with_type <- df_long %>%
   mutate(Type = "Turkey")
-subset_data <- subset_data_with_type[85:96, ]
+subset_data <- subset_data_with_type[25:36, ]
 
 df <- US_Weighted_Expenditure
 
@@ -298,7 +303,7 @@ df_usa <- df_short %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_usa <- df_usa %>%
   mutate(Type = "USA")
-subset_usa <- subset_data_usa[73:84, ]
+subset_usa <- subset_data_usa[25:36, ]
 mixed_graph <- rbind(subset_data,subset_usa)
 
 
@@ -453,3 +458,5 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   labs(title = unique(mixed_graph$Category),       x = "Year",
        y = "Weight")
 ```
+
+Throughout this analysis, country-based sociological and economic interpretations of some basket weights in the CPI were made.
