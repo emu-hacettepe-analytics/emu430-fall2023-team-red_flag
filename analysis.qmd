@@ -319,7 +319,7 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
 ```
 
 ```{r}
-TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
+TUIK_Weighted_Expenditure <-read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
 
 
@@ -333,7 +333,7 @@ df_long <- df_table %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_with_type <- df_long %>%
   mutate(Type = "Turkey")
-subset_data <- subset_data_with_type[97:108, ]
+subset_data <- subset_data_with_type[85:96, ]
 
 df <- US_Weighted_Expenditure
 
@@ -344,7 +344,7 @@ df_usa <- df_short %>%
   pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
 subset_data_usa <- df_usa %>%
   mutate(Type = "USA")
-subset_usa <- subset_data_usa[85:96, ]
+subset_usa <- subset_data_usa[73:84, ]
 mixed_graph <- rbind(subset_data,subset_usa)
 
 

@@ -488,7 +488,7 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>TUIK_Weighted_Expenditure <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx"</span>)</span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>TUIK_Weighted_Expenditure <span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>US_Weighted_Expenditure <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -502,7 +502,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Category, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Weight"</span>)</span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>subset_data_with_type <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span></span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type =</span> <span class="st">"Turkey"</span>)</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> subset_data_with_type[<span class="dv">97</span><span class="sc">:</span><span class="dv">108</span>, ]</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> subset_data_with_type[<span class="dv">85</span><span class="sc">:</span><span class="dv">96</span>, ]</span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> US_Weighted_Expenditure</span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
@@ -513,7 +513,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Category, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Weight"</span>)</span>
 <span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>subset_data_usa <span class="ot">&lt;-</span> df_usa <span class="sc">%&gt;%</span></span>
 <span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type =</span> <span class="st">"USA"</span>)</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>subset_usa <span class="ot">&lt;-</span> subset_data_usa[<span class="dv">85</span><span class="sc">:</span><span class="dv">96</span>, ]</span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>subset_usa <span class="ot">&lt;-</span> subset_data_usa[<span class="dv">73</span><span class="sc">:</span><span class="dv">84</span>, ]</span>
 <span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>mixed_graph <span class="ot">&lt;-</span> <span class="fu">rbind</span>(subset_data,subset_usa)</span>
 <span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
