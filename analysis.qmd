@@ -1,8 +1,6 @@
----
-title: "Analysis"
----
 
-**Our main goal as a team in this report is to make economic and sociological comments about the changes in the basket weights of the Consumer Price Index, the most common measurement method of inflation, over the years. Here, US data is taken as a developed base country data**.
+
+Our main goal as a team in this report is to make economic and sociological comments about the changes in the basket weights of the Consumer Price Index, the most common measurement method of inflation, over the years. Here, US data is taken as a developed base country data.
 
 First of all, this chart is the graphical representation of the food group weight unit, which is the most basic weight unit of the CPI. There are two main reasons why the food weight group is the basic and most important weight group in the CPI. The first of these is that changes in the food weight group generally show a similar approach to the change and rate of CPI, that is, inflation. So, when you want to evaluate inflation in a general period, you can make a correct comment by looking at the food weight group. The second reason is that the average weight level of the eating weight group in a country actually provides information about the development level of that country. As can be clearly seen in the graph, the eating weight group values in Turkey, which is among the developing countries, have always been above the values in the developed country, America. The weight of the eating group decreases according to the development level of the countries. This will be the most important analysis throughout this report. In addition to the eating weight group, there is actually another weight group that we will analyze for development. You will see it in the rest of our analysis.
 
@@ -94,7 +92,8 @@ ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
 
 You can see another policy effect in the health weight group. The health system in Turkey generally continues under state management. On the contrary, there is a competitive environment in the healthcare system in America. You can understand this directly from the fact that it has a higher weight in the basket of consumers in America than consumers in Turkey.
 
-```{TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")}
+```{r}
+TUIK_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx")
 US_Weighted_Expenditure <- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
 
 
@@ -121,6 +120,11 @@ subset_data_usa <- df_usa %>%
   mutate(Type = "USA")
 subset_usa <- subset_data_usa[49:60, ]
 mixed_graph <- rbind(subset_data,subset_usa)
+
+ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
+  geom_line() +
+  labs(title = unique(mixed_graph$Category),       x = "Year",
+       y = "Weight")
 
 ```
 
