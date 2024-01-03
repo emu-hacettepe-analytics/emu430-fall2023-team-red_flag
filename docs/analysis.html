@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Red Flag’s Project Lab - Analysis</title>
+<title>Red Flag's Project Lab – analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -151,24 +151,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Analysis</h1>
-</div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
-
-<p><strong>Our main goal as a team in this report is to make economic and sociological comments about the changes in the basket weights of the Consumer Price Index, the most common measurement method of inflation, over the years. Here, US data is taken as a developed base country data</strong>.</p>
+<p>Our main goal as a team in this report is to make economic and sociological comments about the changes in the basket weights of the Consumer Price Index, the most common measurement method of inflation, over the years. Here, US data is taken as a developed base country data.</p>
 <p>First of all, this chart is the graphical representation of the food group weight unit, which is the most basic weight unit of the CPI. There are two main reasons why the food weight group is the basic and most important weight group in the CPI. The first of these is that changes in the food weight group generally show a similar approach to the change and rate of CPI, that is, inflation. So, when you want to evaluate inflation in a general period, you can make a correct comment by looking at the food weight group. The second reason is that the average weight level of the eating weight group in a country actually provides information about the development level of that country. As can be clearly seen in the graph, the eating weight group values in Turkey, which is among the developing countries, have always been above the values in the developed country, America. The weight of the eating group decreases according to the development level of the countries. This will be the most important analysis throughout this report. In addition to the eating weight group, there is actually another weight group that we will analyze for development. You will see it in the rest of our analysis.</p>
 <p>Actually, I would like to draw your attention to a very interesting detail. The pandemic has clearly shown its impact on the economy, as in all parts of life. Looking at the data in 2020-2021-2022, there is an increase in the pandemic in the eating weight group in Turkey and a decrease in the year the pandemic decreases (normally). This increase actually indicates an increase in inflation. However, the interesting thing is that in American data, the opposite is observed, that is, while there is a decrease in 2021, there is an increase in 2022. Roughly speaking, while inflation is decreasing in the United States in the midst of uncertainty such as a pandemic, what do you think could be the main reason for the increase in inflation in the period when uncertainty decreases?</p>
 <div class="cell">
@@ -270,33 +255,41 @@ Attaching package: 'dplyr'</code></pre>
 </div>
 <p>You can see another policy effect in the health weight group. The health system in Turkey generally continues under state management. On the contrary, there is a competitive environment in the healthcare system in America. You can understand this directly from the fact that it has a higher weight in the basket of consumers in America than consumers in Turkey.</p>
 <div class="cell">
-<pre class="tuik_weighted_expenditure cell-code"><code>US_Weighted_Expenditure &lt;- read_excel("/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx")
-
-
-df &lt;- TUIK_Weighted_Expenditure
-
-
-df_table &lt;- df %&gt;% 
-  distinct(Year, Category, .keep_all = TRUE) %&gt;%
-  pivot_wider(names_from = Year, values_from= weight)
-df_long &lt;- df_table %&gt;%
-  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
-subset_data_with_type &lt;- df_long %&gt;%
-  mutate(Type = "Turkey")
-subset_data &lt;- subset_data_with_type[61:72, ]
-
-df &lt;- US_Weighted_Expenditure
-
-df_short &lt;- df %&gt;% 
-  distinct(Year, Category, .keep_all = TRUE) %&gt;%
-  pivot_wider(names_from = Year, values_from= Weight)
-df_usa &lt;- df_short %&gt;%
-  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
-subset_data_usa &lt;- df_usa %&gt;%
-  mutate(Type = "USA")
-subset_usa &lt;- subset_data_usa[49:60, ]
-mixed_graph &lt;- rbind(subset_data,subset_usa)
-</code></pre>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>TUIK_Weighted_Expenditure <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/gorkemgunes/Desktop/TUIK-Weighted-Expenditure.xlsx"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>US_Weighted_Expenditure <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"/Users/gorkemgunes/Desktop/US-Weighted-Expenditure.xlsx"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> TUIK_Weighted_Expenditure</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df_table <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Year, Category, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Year, <span class="at">values_from=</span> weight)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>df_long <span class="ot">&lt;-</span> df_table <span class="sc">%&gt;%</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Category, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Weight"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>subset_data_with_type <span class="ot">&lt;-</span> df_long <span class="sc">%&gt;%</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type =</span> <span class="st">"Turkey"</span>)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>subset_data <span class="ot">&lt;-</span> subset_data_with_type[<span class="dv">61</span><span class="sc">:</span><span class="dv">72</span>, ]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> US_Weighted_Expenditure</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>df_short <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span> </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Year, Category, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Year, <span class="at">values_from=</span> Weight)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>df_usa <span class="ot">&lt;-</span> df_short <span class="sc">%&gt;%</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="sc">-</span>Category, <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Weight"</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>subset_data_usa <span class="ot">&lt;-</span> df_usa <span class="sc">%&gt;%</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Type =</span> <span class="st">"USA"</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>subset_usa <span class="ot">&lt;-</span> subset_data_usa[<span class="dv">49</span><span class="sc">:</span><span class="dv">60</span>, ]</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>mixed_graph <span class="ot">&lt;-</span> <span class="fu">rbind</span>(subset_data,subset_usa)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(mixed_graph, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Weight, <span class="at">color =</span> Type, <span class="at">group =</span> Type)) <span class="sc">+</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
 </div>
 <p>Our other chart that clearly shows the impact of economic decisions on the weight units in the consumer’s CPI basket is the housing weight group. As you can see, the weight of the housing group in America is much greater than in Turkey. The main reason for this is that there is actually a mortgage industry in America and this is supported and encouraged by the state.</p>
 <div class="cell">
@@ -334,7 +327,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>In the chart below, the graph of the household good weight group only in Turkey is depicted. The main reason for this is that such a weight group is not included in the American CPI basket. This is an indication that the weight groups in the CPI may vary depending on the spending behavior and cultural structure of the society in that country.</p>
@@ -374,7 +367,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The recreation and culture weight group below is the weight group that gives information about the other development mentioned at the beginning of the analysis. As you can see in the chart, the basket weight of America, a developed country, is higher than the basket weight of developing Turkey. In addition, the impact of the decreasing purchasing power in Turkey in recent years on society is clearly seen. With decreasing purchasing power, people give up their entertainment or social activities.</p>
@@ -413,7 +406,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -452,7 +445,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -491,7 +484,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -529,7 +522,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -567,7 +560,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -605,7 +598,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <div class="cell">
@@ -644,7 +637,7 @@ mixed_graph &lt;- rbind(subset_data,subset_usa)
 <span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="fu">unique</span>(mixed_graph<span class="sc">$</span>Category),       <span class="at">x =</span> <span class="st">"Year"</span>,</span>
 <span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="analysis_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid" width="672"></p>
+<p><img src="analysis_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Throughout this analysis, country-based sociological and economic interpretations of some basket weights in the CPI were made.</p>
