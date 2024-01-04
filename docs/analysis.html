@@ -177,19 +177,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <script>
 function toggleCodeBlock() {
-  var x = document.getElementById("codeBlock");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  var codeBlocks = document.getElementsByClassName("code");
+  for (var i = 0; i < codeBlocks.length; i++) {
+    if (codeBlocks[i].style.display === "none") {
+      codeBlocks[i].style.display = "block";
+    } else {
+      codeBlocks[i].style.display = "none";
+    }
   }
 }
 </script>
 <button onclick="toggleCodeBlock()">
 Show/Hide Code
 </button>
-<div id="codeBlock" style="display:none">
-
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
@@ -676,7 +676,7 @@ Attaching package: 'dplyr'</code></pre>
 
 
 
-</div><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

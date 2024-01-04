@@ -17,18 +17,20 @@ You can see another policy effect in the health weight group. The health system 
 
 <script>
 function toggleCodeBlock() {
-  var x = document.getElementById("codeBlock");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
+  var codeBlocks = document.getElementsByClassName("code");
+  for (var i = 0; i < codeBlocks.length; i++) {
+    if (codeBlocks[i].style.display === "none") {
+      codeBlocks[i].style.display = "block";
+    } else {
+      codeBlocks[i].style.display = "none";
+    }
   }
 }
 </script>
 
 <button onclick="toggleCodeBlock()">Show/Hide Code</button>
-<div id="codeBlock" style="display:none">
-```{r, echo=TRUE}
+
+```{r, echo=TRUE, class.output="code"}
 library(dplyr)
 library(readxl)
 library(ggplot2)
