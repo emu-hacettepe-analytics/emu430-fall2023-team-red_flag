@@ -9,6 +9,12 @@ Actually, I would like to draw your attention to a very interesting detail. The 
 title: "Analysis"
 output: html_document
 ---
+<div>
+Secondly, in the chart below you see the values of the alcohol weight group in two countries. Here I would like to draw your attention to the difference between the weight values in Turkey and America. This chart actually directly shows the sociological effects, not the economic effects, of the CPI basket weight. Although sociological interpretations cannot be made as precisely as economic interpretations, it can be said that here is the effect of the prohibition pressure against alcohol and tobacco products in Turkish society, which was created together with politics and religion.
+
+You can see another policy effect in the health weight group. The health system in Turkey generally continues under state management. On the contrary, there is a competitive environment in the healthcare system in America. You can understand this directly from the fact that it has a higher weight in the basket of consumers in America than consumers in Turkey.
+</div>
+
 <script>
 function toggleCodeBlock() {
   var x = document.getElementById("codeBlock");
@@ -22,7 +28,6 @@ function toggleCodeBlock() {
 
 <button onclick="toggleCodeBlock()">Show/Hide Code</button>
 <div id="codeBlock" style="display:none">
-
 ```{r, echo=TRUE}
 library(dplyr)
 library(readxl)
@@ -56,8 +61,6 @@ subset_data_usa <- df_usa %>%
 subset_usa <- subset_data_usa[1:12, ]
 mixed_graph <- rbind(subset_data,subset_usa)
 
-
-```{r}
 ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   geom_line() +
   labs(title = unique(mixed_graph$Category),       x = "Year",
