@@ -5,8 +5,25 @@ Our main goal as a team in this report is to make economic and sociological comm
 First of all, this chart is the graphical representation of the food group weight unit, which is the most basic weight unit of the CPI. There are two main reasons why the food weight group is the basic and most important weight group in the CPI. The first of these is that changes in the food weight group generally show a similar approach to the change and rate of CPI, that is, inflation. So, when you want to evaluate inflation in a general period, you can make a correct comment by looking at the food weight group. The second reason is that the average weight level of the eating weight group in a country actually provides information about the development level of that country. As can be clearly seen in the graph, the eating weight group values in Turkey, which is among the developing countries, have always been above the values in the developed country, America. The weight of the eating group decreases according to the development level of the countries. This will be the most important analysis throughout this report. In addition to the eating weight group, there is actually another weight group that we will analyze for development. You will see it in the rest of our analysis.
 
 Actually, I would like to draw your attention to a very interesting detail. The pandemic has clearly shown its impact on the economy, as in all parts of life. Looking at the data in 2020-2021-2022, there is an increase in the pandemic in the eating weight group in Turkey and a decrease in the year the pandemic decreases (normally). This increase actually indicates an increase in inflation. However, the interesting thing is that in American data, the opposite is observed, that is, while there is a decrease in 2021, there is an increase in 2022. Roughly speaking, while inflation is decreasing in the United States in the midst of uncertainty such as a pandemic, what do you think could be the main reason for the increase in inflation in the period when uncertainty decreases?
+---
+title: "Analysis"
+output: html_document
+---
+<script>
+function toggleCodeBlock() {
+  var x = document.getElementById("codeBlock");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 
-```{r, code-fold: true, code-summary: "Show the code"}
+<button onclick="toggleCodeBlock()">Show/Hide Code</button>
+<div id="codeBlock" style="display:none">
+
+```{r, echo=TRUE}
 library(dplyr)
 library(readxl)
 library(ggplot2)
