@@ -49,38 +49,3 @@ When we review TUIKdata set, we can observe that it contains 3 columns and 144 r
 
 When we review US data set, we can observe that it contains 3 columns and 120rows. While the columns of our dataset contain date, category, and weight percentage. The dates are between 2011-2022, and the categories represent expenditure groups. If we examine the expenditure groups in our data set: Food and non-alcoholic beverages, Alcoholic beverages and tobacco, Clothing and footwear, Housing water electricity gas and fuels, health, transportation, communucation, Recreation and culture, education, and lastly Miscellaneous goods and services.
 
-```{r}
-library(dplyr)
-library(tidyr)
-library(ggplot2)
-df <- TUIK_Weighted_Expenditure
-
-
-df_table <- df %>% 
-  distinct(Year, Category, .keep_all = TRUE) %>%
-  pivot_wider(names_from = Year, values_from= weight)
-df_long <- df_table %>%
-  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
-subset_data_with_type <- df_long %>%
-  mutate(Type = "Turkey")
-subset_data <- subset_data_with_type[1:12, ]
-
-df <- US_Weighted_Expenditure
-
-df_short <- df %>% 
-  distinct(Year, Category, .keep_all = TRUE) %>%
-  pivot_wider(names_from = Year, values_from= Weight)
-df_usa <- df_short %>%
-  pivot_longer(cols = -Category, names_to = "Year", values_to = "Weight")
-subset_data_usa <- df_usa %>%
-  mutate(Type = "USA")
-subset_usa <- subset_data_usa[1:12, ]
-mixed_graph <- rbind(subset_data,subset_usa)
-mixed_graph
-
-ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
-  geom_line() +
-  labs(
-       x = "Year",
-       y = "Weight")
-```
