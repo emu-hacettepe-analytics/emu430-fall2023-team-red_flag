@@ -6,7 +6,7 @@ First of all, this chart is the graphical representation of the food group weigh
 
 Actually, I would like to draw your attention to a very interesting detail. The pandemic has clearly shown its impact on the economy, as in all parts of life. Looking at the data in 2020-2021-2022, there is an increase in the pandemic in the eating weight group in Turkey and a decrease in the year the pandemic decreases (normally). This increase actually indicates an increase in inflation. However, the interesting thing is that in American data, the opposite is observed, that is, while there is a decrease in 2021, there is an increase in 2022. Roughly speaking, while inflation is decreasing in the United States in the midst of uncertainty such as a pandemic, what do you think could be the main reason for the increase in inflation in the period when uncertainty decreases?
 
-```{r, code-fold-html, code-fold: true, code-summary: "Show the code"}
+```{r, code-fold: true, code-summary: "Show the code"}
 library(dplyr)
 library(readxl)
 library(ggplot2)
@@ -40,7 +40,7 @@ subset_usa <- subset_data_usa[1:12, ]
 mixed_graph <- rbind(subset_data,subset_usa)
 
 
-
+```{r}
 ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   geom_line() +
   labs(title = unique(mixed_graph$Category),       x = "Year",
