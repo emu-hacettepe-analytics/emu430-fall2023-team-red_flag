@@ -5,32 +5,8 @@ Our main goal as a team in this report is to make economic and sociological comm
 First of all, this chart is the graphical representation of the food group weight unit, which is the most basic weight unit of the CPI. There are two main reasons why the food weight group is the basic and most important weight group in the CPI. The first of these is that changes in the food weight group generally show a similar approach to the change and rate of CPI, that is, inflation. So, when you want to evaluate inflation in a general period, you can make a correct comment by looking at the food weight group. The second reason is that the average weight level of the eating weight group in a country actually provides information about the development level of that country. As can be clearly seen in the graph, the eating weight group values in Turkey, which is among the developing countries, have always been above the values in the developed country, America. The weight of the eating group decreases according to the development level of the countries. This will be the most important analysis throughout this report. In addition to the eating weight group, there is actually another weight group that we will analyze for development. You will see it in the rest of our analysis.
 
 Actually, I would like to draw your attention to a very interesting detail. The pandemic has clearly shown its impact on the economy, as in all parts of life. Looking at the data in 2020-2021-2022, there is an increase in the pandemic in the eating weight group in Turkey and a decrease in the year the pandemic decreases (normally). This increase actually indicates an increase in inflation. However, the interesting thing is that in American data, the opposite is observed, that is, while there is a decrease in 2021, there is an increase in 2022. Roughly speaking, while inflation is decreasing in the United States in the midst of uncertainty such as a pandemic, what do you think could be the main reason for the increase in inflation in the period when uncertainty decreases?
----
-title: "Analysis"
-output: html_document
----
-<div>
-Secondly, in the chart below you see the values of the alcohol weight group in two countries. Here I would like to draw your attention to the difference between the weight values in Turkey and America. This chart actually directly shows the sociological effects, not the economic effects, of the CPI basket weight. Although sociological interpretations cannot be made as precisely as economic interpretations, it can be said that here is the effect of the prohibition pressure against alcohol and tobacco products in Turkish society, which was created together with politics and religion.
 
-You can see another policy effect in the health weight group. The health system in Turkey generally continues under state management. On the contrary, there is a competitive environment in the healthcare system in America. You can understand this directly from the fact that it has a higher weight in the basket of consumers in America than consumers in Turkey.
-</div>
-
-<script>
-function toggleCodeBlock() {
-  var codeBlocks = document.getElementsByClassName("code");
-  for (var i = 0; i < codeBlocks.length; i++) {
-    if (codeBlocks[i].style.display === "none") {
-      codeBlocks[i].style.display = "block";
-    } else {
-      codeBlocks[i].style.display = "none";
-    }
-  }
-}
-</script>
-
-<button onclick="toggleCodeBlock()">Show/Hide Code</button>
-
-```{r, echo=TRUE, class.output="code"}
+```{r}
 library(dplyr)
 library(readxl)
 library(ggplot2)
@@ -63,6 +39,8 @@ subset_data_usa <- df_usa %>%
 subset_usa <- subset_data_usa[1:12, ]
 mixed_graph <- rbind(subset_data,subset_usa)
 
+
+```{r}
 ggplot(mixed_graph, aes(x = Year, y = Weight, color = Type, group = Type)) +
   geom_line() +
   labs(title = unique(mixed_graph$Category),       x = "Year",
